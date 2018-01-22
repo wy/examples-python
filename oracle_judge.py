@@ -62,8 +62,10 @@ def Main(operation, args):
                 Log("Ok it is GAS")
                 receiver = GetExecutingScriptHash()
                 totalGasSent = 0
-
+                cOutputs = len(tx.Outputs)
+                Log(cOutputs)
                 for output in tx.Outputs:
+                    Log(output.Value)
                     shash = GetScriptHash(output)
                     if shash == receiver:
                         totalGasSent = totalGasSent + output.Value
