@@ -16,3 +16,4 @@ def Main(operation):
     """
 
     Log("hello world")
+    return True
