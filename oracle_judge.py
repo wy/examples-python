@@ -36,9 +36,11 @@ def Main(operation, args):
         if is_owner:
             return True
     elif trigger == Application:
-        Log("Verification")
+        Log("Application")
         if operation == 'register-oracle':
             Log("register-oracle")
+            nArgs = len(args)
+            Log(nArgs)
             if len(args) != 1:
                 return False
             context = GetContext()
@@ -57,6 +59,7 @@ def Main(operation, args):
                 Log("Already registered")
                 return False
             if sentAsset == GAS_ASSET_ID:
+                Log("Ok it is GAS")
                 receiver = GetExecutingScriptHash()
                 totalGasSent = 0
 

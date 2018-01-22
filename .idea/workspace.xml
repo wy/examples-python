@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb8cf7b8-120d-49c0-9c51-063113f72a6f" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/oracle_judge.avm" afterPath="$PROJECT_DIR$/oracle_judge.avm" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/oracle_judge.py" afterPath="$PROJECT_DIR$/oracle_judge.py" />
     </list>
@@ -42,8 +43,8 @@
       <file leaf-file-name="oracle_judge.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/oracle_judge.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="31" column="26" lean-forward="false" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
+            <state relative-caret-position="320">
+              <caret line="41" column="29" lean-forward="true" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
               <folding>
                 <element signature="e#387#481#0" expanded="true" />
               </folding>
@@ -422,8 +423,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/oracle_judge.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="31" column="26" lean-forward="false" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
+        <state relative-caret-position="320">
+          <caret line="41" column="29" lean-forward="true" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
           <folding>
             <element signature="e#387#481#0" expanded="true" />
           </folding>
