@@ -31,11 +31,14 @@ def Main(operation, args):
     Log("Running Main Loop")
     trigger = GetTrigger()
     if trigger == Verification:
+        Log("Verification")
         is_owner = CheckWitness(owner)
         if is_owner:
             return True
     elif trigger == Application:
+        Log("Verification")
         if operation == 'register-oracle':
+            Log("register-oracle")
             if len(args) != 1:
                 return False
             context = GetContext()
