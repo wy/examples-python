@@ -49,7 +49,7 @@ def Main(operation, args):
             key = concat(sender,id)
             Log(key)
             oldprice = Get(context, key)
-            if oldprice is None:
+            if oldprice == 0:
                 Append(context, sender, id)
             Put(context,key,price) # Update if already exists
 
@@ -86,7 +86,7 @@ def Main(operation, args):
 
 def Increment(context, price_key):
     count = Get(context, price_key)
-    if count is None:
+    if count == 0:
         count = 1
     else:
         count = count + 1
@@ -96,7 +96,7 @@ def Increment(context, price_key):
 def Append(context, sender, id):
     playerkey = concat("players::",id)
     curr_list = Get(context,playerkey)
-    if curr_list is None:
+    if curr_list == 0:
         curr_list = sender
     else:
         curr_list = concat(curr_list,sender)
