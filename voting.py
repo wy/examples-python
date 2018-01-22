@@ -37,11 +37,17 @@ def Main(operation, args):
         elif operation == 'submit':
             id = args[0]
             price = args[1]
+            Log(id)
+            Log(price)
             tx = GetScriptContainer()
             refs = tx.References
+            nRef = len(refs)
+            Log(nRef)
             ref = refs[0]
             sender = GetScriptHash(ref)
+            Log(sender)
             key = concat(sender,id)
+            Log(key)
             oldprice = Get(context, key)
             if oldprice is None:
                 Append(context, sender, id)
