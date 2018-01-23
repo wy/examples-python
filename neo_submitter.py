@@ -63,6 +63,10 @@ def sc_log(event):
     if not len(event.event_payload):
         return
 
+    # Make sure not test mode
+    if event.test_mode:
+        return
+
     # The event payload list has at least one element. As developer of the smart contract
     # you should know what data-type is in the bytes, and how to decode it. In this example,
     # it's just a string, so we decode it with utf-8:
