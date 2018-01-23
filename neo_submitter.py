@@ -68,7 +68,7 @@ def sc_log(event):
     logger.info("- payload part 1: %s", event.event_payload[0])
     game = event.event_payload[0]
     #args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f','submit',[game,2,wallet_hash]]
-    args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f ', 'new', ['3']]
+    args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f ', 'new', [3]]
     test_invoke_contract(args)
 
 
