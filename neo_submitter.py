@@ -71,7 +71,7 @@ def sc_log(event):
     #args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f','submit',[game,2,wallet_hash]]
     x = Random.randint(1, 9)
 
-    args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f ', 'new', [x]]
+    args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f', 'new', [x]]
     test_invoke_contract(args)
 
 
