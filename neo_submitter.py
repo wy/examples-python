@@ -51,7 +51,7 @@ def test_invoke_contract(args):
 
 
 # Register an event handler for Runtime.Notify events of the smart contract.
-@smart_contract.on_notify()
+@smart_contract.on_notify
 def sc_log(event):
     logger.info("SmartContract Runtime.Notify event: %s", event)
 
