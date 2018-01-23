@@ -20,7 +20,8 @@ from neo.Core.TX.InvocationTransaction import InvocationTransaction
 from neo.Core.TX.TransactionAttribute import TransactionAttribute, TransactionAttributeUsage
 from neo.Core.TX.Transaction import TransactionOutput
 
-from neo.SmartContract.ApplicationEngine import ApplicationEngine
+#from neo.SmartContract.ApplicationEngine import ApplicationEngine
+from ApplicationEngine_Debug import ApplicationEngine
 from neo.SmartContract import TriggerType
 from neo.SmartContract.StateMachine import StateMachine
 from neo.SmartContract.ContractParameterContext import ContractParametersContext
