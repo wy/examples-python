@@ -28,7 +28,7 @@ from neocore.KeyPair import KeyPair
 
 # Setup the smart contract instance
 # This is online voting v0.5
-smart_contract = SmartContract("ef254dc68e36de6a3a5d2de59ae1cdff3887938f")
+smart_contract = SmartContract("12415ffba504cb6b964a9c4281a9c3f25ee8f55c")
 wallet_hash = 'AYr1yJo42i58dU6kQX6j96ayCw13zhvjYv'
 wif = 'L5Cp8JMBuLQXvsY5Gijj7oPXkit9skMpsJu7ECyyrnvBmJcgGa7v'
 Wallet = None
@@ -68,7 +68,7 @@ def sc_log(event):
     logger.info("- payload part 1: %s", event.event_payload[0])
     game = event.event_payload[0]
     #args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f','submit',[game,2,wallet_hash]]
-    args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f', 'new', '3']
+    args = ['12415ffba504cb6b964a9c4281a9c3f25ee8f55c', 'new', '3']
     test_invoke_contract(args)
 
 
