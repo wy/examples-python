@@ -41,6 +41,7 @@ def Main(operation, args):
         elif operation == 'submit':
             id = args[0]
             price = args[1]
+            sender = args[2]
             Log(id)
             Log(price)
 
@@ -50,12 +51,10 @@ def Main(operation, args):
                 Log("Not the correct game")
                 return False
 
-            tx = GetScriptContainer()
-            refs = tx.References
-            nRef = len(refs)
-            Log(nRef)
-            ref = refs[0]
-            sender = GetScriptHash(ref)
+            if not CheckWitness(sender):
+                Log("Oracle is not the right person")
+                return False
+
             Log(sender)
             key = concat(sender,id)
             Log(key)
