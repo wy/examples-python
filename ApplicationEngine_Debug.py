@@ -205,7 +205,7 @@ class ApplicationEngine(ExecutionEngine):
         while self._VMState & VMState.HALT == 0 and self._VMState & VMState.FAULT == 0:
 
             try:
-
+                print(self.EvaluationStack.Items)
                 self.gas_consumed = self.gas_consumed + (self.GetPrice() * self.ratio)
                 print("gas consumed: {}".format(self.gas_consumed))
             except Exception as e:
