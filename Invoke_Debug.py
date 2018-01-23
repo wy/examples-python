@@ -266,14 +266,16 @@ def test_invoke(script, wallet, outputs, withdrawal_tx=None, from_addr=None):
     if len(outputs) < 1:
         contract = wallet.GetDefaultContract()
         print("Got default contract")
-        print(contract)
+        print(contract.Script)
         tx.Attributes = [TransactionAttribute(usage=TransactionAttributeUsage.Script, data=Crypto.ToScriptHash(contract.Script).Data)]
-
+        print(tx.Attributes)
     # same as above. we don't want to re-make the transaction if it is a withdrawal tx
     if withdrawal_tx is not None:
         wallet_tx = tx
     else:
         wallet_tx = wallet.MakeTransaction(tx=tx, from_addr=from_addr)
+
+    print("Got through wallet MakeTransaction")
 
     if wallet_tx:
 
