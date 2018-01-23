@@ -163,7 +163,11 @@ def TestInvokeContract(wallet, args, withdrawal_tx=None, parse_params=True, from
 
         params, neo_to_attach, gas_to_attach = get_asset_attachments(params)
 
+        print(params)
+
         params.reverse()
+
+        print(params)
 
         sb = ScriptBuilder()
 
@@ -174,7 +178,10 @@ def TestInvokeContract(wallet, args, withdrawal_tx=None, parse_params=True, from
             else:
                 item = p
 
+            print(item)
+
             if type(item) is list:
+                print("list")
                 item.reverse()
                 listlength = len(item)
                 for listitem in item:
@@ -182,7 +189,11 @@ def TestInvokeContract(wallet, args, withdrawal_tx=None, parse_params=True, from
                 sb.push(listlength)
                 sb.Emit(PACK)
             else:
+                print("push single item")
                 sb.push(item)
+
+
+        print("making contract call")
 
         sb.EmitAppCall(contract.Code.ScriptHash().Data)
 
@@ -205,7 +216,7 @@ def TestInvokeContract(wallet, args, withdrawal_tx=None, parse_params=True, from
                                        script_hash=contract.Code.ScriptHash())
 
             outputs.append(output)
-
+        print("calling test_invoke")
         return test_invoke(out, wallet, outputs, withdrawal_tx)
 
     else:
