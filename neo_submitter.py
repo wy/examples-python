@@ -65,8 +65,8 @@ def sc_log(event):
     # it's just a string, so we decode it with utf-8:
     logger.info("- payload part 1: %s", event.event_payload[0])
     game = event.event_payload[0]
-    args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f','submit',[game,2,wallet_hash]]
-
+    #args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f','submit',[game,2,wallet_hash]]
+    args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f', 'new', '3']
     test_invoke_contract(args)
 
 
