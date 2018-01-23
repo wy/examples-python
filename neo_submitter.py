@@ -21,7 +21,7 @@ from Invoke_Debug import InvokeContract, TestInvokeContract, test_invoke
 from neo.Implementations.Wallets.peewee.UserWallet import UserWallet
 from neocore.KeyPair import KeyPair
 
-from random import Random
+import random
 
 # If you want the log messages to also be saved in a logfile, enable the
 # next line. This configures a logfile with max 10 MB and 3 rotations:
@@ -69,7 +69,7 @@ def sc_log(event):
     logger.info("- payload part 1: %s", event.event_payload[0])
     game = event.event_payload[0]
     #args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f','submit',[game,2,wallet_hash]]
-    x = Random.randint(1, 9)
+    x = random.randint(1, 9)
 
     args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f', 'new', [x]]
     test_invoke_contract(args)
