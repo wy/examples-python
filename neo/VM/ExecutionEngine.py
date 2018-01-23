@@ -695,7 +695,7 @@ class ExecutionEngine():
             elif opcode == PICKITEM:
 
                 index = estack.Pop().GetBigInteger()
-
+                print(index)
                 if index < 0:
                     self._VMState |= VMState.FAULT
                     return
