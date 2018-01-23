@@ -295,6 +295,8 @@ def test_invoke(script, wallet, outputs, withdrawal_tx=None, from_addr=None):
 
     engine.LoadScript(wallet_tx.Script, False)
 
+    print("Loaded Script")
+
     try:
         # drum roll?
         success = engine.Execute()
@@ -331,6 +333,9 @@ def test_invoke(script, wallet, outputs, withdrawal_tx=None, from_addr=None):
             # reset the wallet outputs
             wallet_tx.outputs = outputs
             wallet_tx.Attributes = []
+
+            print("Got to the end")
+            print(engine.EvaluationStack.Items)
 
             return wallet_tx, net_fee, engine.EvaluationStack.Items, engine.ops_processed
 
