@@ -207,7 +207,7 @@ class ApplicationEngine(ExecutionEngine):
             try:
 
                 self.gas_consumed = self.gas_consumed + (self.GetPrice() * self.ratio)
-                print("gas consumed: %s " % self.gas_consumed)
+                print("gas consumed: {}".format(self.gas_consumed))
             except Exception as e:
                 print("Exception calculating gas consumed %s " % e)
                 return False
@@ -235,7 +235,7 @@ class ApplicationEngine(ExecutionEngine):
             if not self.CheckDynamicInvoke():
                 print("Dynamic invoke without proper contract")
                 return False
-
+            print("All good - stepping into")
             self.StepInto()
 
         return not self._VMState & VMState.FAULT > 0
