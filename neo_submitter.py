@@ -31,8 +31,8 @@ from neocore.KeyPair import KeyPair
 smart_contract = SmartContract("11356dede91d9cb9909146d90be8c32fa980e31f")
 wallet_hash = 'AYr1yJo42i58dU6kQX6j96ayCw13zhvjYv'
 wif = 'L5Cp8JMBuLQXvsY5Gijj7oPXkit9skMpsJu7ECyyrnvBmJcgGa7v'
-Wallet = UserWallet.Create(path="mywallet",password="###")
-Wallet.CreateKey(KeyPair.PrivateKeyFromWIF(wif))
+Wallet = None
+
 
 def test_invoke_contract(args):
     if not Wallet:
@@ -98,6 +98,9 @@ def main():
     d = threading.Thread(target=custom_background_code)
     d.setDaemon(True)  # daemonizing the thread will kill it when the main thread is quit
     d.start()
+
+    Wallet = UserWallet.Create(path="mywallet", password="###")
+    Wallet.CreateKey(KeyPair.PrivateKeyFromWIF(wif))
 
     # Run all the things (blocking call)
     logger.info("Everything setup and running. Waiting for events...")
