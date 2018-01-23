@@ -102,10 +102,10 @@ def main():
     settings.set_log_smart_contract_events(False)
 
     global Wallet
-    Wallet = UserWallet.Create(path="mywallet", password="0123456789")
+    Wallet = UserWallet.Open(path="testwallet", password="0123456789")
     logger.info("Created the Wallet")
     logger.info(Wallet.AddressVersion)
-    Wallet.CreateKey(KeyPair.PrivateKeyFromWIF(wif))
+    #Wallet.CreateKey(KeyPair.PrivateKeyFromWIF(wif))
 
     # Start a thread with custom code
     d = threading.Thread(target=custom_background_code)

@@ -38,7 +38,7 @@ def Main(operation, args):
             Put(context,"current_game", id)
             Put(context, "max", 0)
             Log("Created a new game")
-            Notify([id])
+            Notify(id)
 
         elif operation == 'submit':
             id = args[0]
