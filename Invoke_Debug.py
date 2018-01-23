@@ -228,7 +228,8 @@ def TestInvokeContract(wallet, args, withdrawal_tx=None, parse_params=True, from
 
 def test_invoke(script, wallet, outputs, withdrawal_tx=None, from_addr=None):
 
-    #    print("invoke script %s " % script)
+    print("invoke script %s " % script)
+    print(wallet._keys)
 
     bc = GetBlockchain()
 
@@ -251,6 +252,8 @@ def test_invoke(script, wallet, outputs, withdrawal_tx=None, from_addr=None):
         tx.outputs = outputs
         tx.inputs = []
 
+    print("Ok here we are")
+
     tx.Version = 1
     tx.scripts = []
     tx.Script = binascii.unhexlify(script)
@@ -258,8 +261,12 @@ def test_invoke(script, wallet, outputs, withdrawal_tx=None, from_addr=None):
     script_table = CachedScriptTable(contracts)
     service = StateMachine(accounts, validators, assets, contracts, storages, None)
 
+    print("Created a StateMachine")
+
     if len(outputs) < 1:
         contract = wallet.GetDefaultContract()
+        print("Got default contract")
+        print(contract)
         tx.Attributes = [TransactionAttribute(usage=TransactionAttributeUsage.Script, data=Crypto.ToScriptHash(contract.Script).Data)]
 
     # same as above. we don't want to re-make the transaction if it is a withdrawal tx
@@ -327,7 +334,7 @@ def test_invoke(script, wallet, outputs, withdrawal_tx=None, from_addr=None):
 
     except Exception as e:
         service.ExecutionCompleted(engine, False, e)
-#        print("COULD NOT EXECUTE %s " % e)
+        print("COULD NOT EXECUTE %s " % e)
 
     return None, None, None, None
 
