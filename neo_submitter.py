@@ -53,6 +53,7 @@ def test_invoke_contract(args):
 # Register an event handler for Runtime.Notify events of the smart contract.
 @smart_contract.on_notify
 def sc_log(event):
+    logger.info(Wallet.AddressVersion)
     logger.info("SmartContract Runtime.Notify event: %s", event)
 
     # Make sure that the event payload list has at least one element.
@@ -101,6 +102,7 @@ def main():
 
     Wallet = UserWallet.Create(path="mywallet", password="0123456789")
     logger.info("Created the Wallet")
+    logger.info(Wallet.AddressVersion)
     Wallet.CreateKey(KeyPair.PrivateKeyFromWIF(wif))
 
     # Run all the things (blocking call)
