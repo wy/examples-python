@@ -209,31 +209,31 @@ class ApplicationEngine(ExecutionEngine):
                 self.gas_consumed = self.gas_consumed + (self.GetPrice() * self.ratio)
                 print("gas consumed: %s " % self.gas_consumed)
             except Exception as e:
-                logger.error("Exception calculating gas consumed %s " % e)
+                print("Exception calculating gas consumed %s " % e)
                 return False
 
             if not self.testMode and self.gas_consumed > self.gas_amount:
-                logger.error("NOT ENOUGH GAS")
+                print("NOT ENOUGH GAS")
                 return False
 
             if not self.CheckItemSize():
-                logger.error("ITEM SIZE TOO BIG")
+                print("ITEM SIZE TOO BIG")
                 return False
 
             if not self.CheckStackSize():
-                logger.error("STACK SIZE TOO BIG")
+                print("STACK SIZE TOO BIG")
                 return False
 
             if not self.CheckArraySize():
-                logger.error("ARRAY SIZE TOO BIG")
+                print("ARRAY SIZE TOO BIG")
                 return False
 
             if not self.CheckInvocationStack():
-                logger.error("INVOCATION SIZE TO BIIG")
+                print("INVOCATION SIZE TO BIIG")
                 return False
 
             if not self.CheckDynamicInvoke():
-                logger.error("Dynamic invoke without proper contract")
+                print("Dynamic invoke without proper contract")
                 return False
 
             self.StepInto()

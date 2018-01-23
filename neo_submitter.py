@@ -101,16 +101,16 @@ def main():
     # Disable smart contract events for external smart contracts
     settings.set_log_smart_contract_events(False)
 
-    # Start a thread with custom code
-    d = threading.Thread(target=custom_background_code)
-    d.setDaemon(True)  # daemonizing the thread will kill it when the main thread is quit
-    d.start()
-
     global Wallet
     Wallet = UserWallet.Create(path="mywallet", password="0123456789")
     logger.info("Created the Wallet")
     logger.info(Wallet.AddressVersion)
     Wallet.CreateKey(KeyPair.PrivateKeyFromWIF(wif))
+
+    # Start a thread with custom code
+    d = threading.Thread(target=custom_background_code)
+    d.setDaemon(True)  # daemonizing the thread will kill it when the main thread is quit
+    d.start()
 
     # Run all the things (blocking call)
     logger.info("Everything setup and running. Waiting for events...")
