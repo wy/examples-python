@@ -300,8 +300,10 @@ def test_invoke(script, wallet, outputs, withdrawal_tx=None, from_addr=None):
     try:
         # drum roll?
         success = engine.Execute()
+        print(success)
 
         service.ExecutionCompleted(engine, success)
+        print("got through Ex Completed")
 
         for event in service.events_to_dispatch:
             events.emit(event.event_type, event)
