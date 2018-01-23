@@ -44,6 +44,7 @@ def Main(operation, args):
             sender = args[2]
             Log(id)
             Log(price)
+            Log(sender)
 
             # Only allow submissions for the current game
             current_game = Get(context, "current_game")
@@ -91,7 +92,7 @@ def Main(operation, args):
                     Log("Player did LIE!")
                 else:
                     Log("Player told the TRUTH!")
-                return True
+            return True
         return True
     return False
 

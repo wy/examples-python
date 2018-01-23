@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb8cf7b8-120d-49c0-9c51-063113f72a6f" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/neo_submitter.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/online_voting.avm" afterPath="$PROJECT_DIR$/online_voting.avm" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/online_voting.py" afterPath="$PROJECT_DIR$/online_voting.py" />
@@ -65,11 +66,21 @@
       <file leaf-file-name="online_voting.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/online_voting.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1058">
-              <caret line="56" column="0" lean-forward="true" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+            <state relative-caret-position="778">
+              <caret line="95" column="19" lean-forward="true" selection-start-line="95" selection-start-column="19" selection-end-line="95" selection-end-column="19" />
               <folding>
                 <element signature="e#192#286#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="neo_submitter.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/neo_submitter.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -97,8 +108,8 @@
       <file leaf-file-name="base58helper.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/base58helper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="16" column="39" lean-forward="false" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="39" />
+            <state relative-caret-position="680">
+              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -109,7 +120,7 @@
       <file leaf-file-name="BinaryReader.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BinaryReader.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
+            <state relative-caret-position="-880">
               <caret line="5" column="52" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="52" />
               <folding>
                 <element signature="e#100#110#0" expanded="true" />
@@ -153,6 +164,7 @@
         <option value="$PROJECT_DIR$/base58helper.py" />
         <option value="$PROJECT_DIR$/voting.py" />
         <option value="$PROJECT_DIR$/hello_compiler.py" />
+        <option value="$PROJECT_DIR$/neo_submitter.py" />
         <option value="$PROJECT_DIR$/online_voting.py" />
       </list>
     </option>
@@ -578,26 +590,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BinaryReader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="5" column="52" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="52" />
-          <folding>
-            <element signature="e#100#110#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/base58helper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="16" column="39" lean-forward="false" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/timestamp.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="920">
@@ -667,10 +659,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/neo_submitter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BinaryReader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-880">
+          <caret line="5" column="52" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="52" />
+          <folding>
+            <element signature="e#100#110#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/base58helper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/online_voting.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1058">
-          <caret line="56" column="0" lean-forward="true" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+        <state relative-caret-position="778">
+          <caret line="95" column="19" lean-forward="true" selection-start-line="95" selection-start-column="19" selection-end-line="95" selection-end-column="19" />
           <folding>
             <element signature="e#192#286#0" expanded="true" />
           </folding>
