@@ -32,8 +32,10 @@ def Main(operation, args):
             return Get(context, key)
 
         if operation == 'new':
+            Log("op: new")
             id = args[0]
             Put(context,"current_game", id)
+            Put(context, "max", 0)
             Log("Created a new game")
 
         elif operation == 'submit':
@@ -58,35 +60,38 @@ def Main(operation, args):
             key = concat(sender,id)
             Log(key)
             oldprice = Get(context, key)
-            if oldprice == 0:
-                Append(context, sender, id)
+            if oldprice != 0:
+                # Too late you've already submitted
+                Log("Error: cannot submit twice for the same game")
+                return False
+            Append(context, sender, id)
             Put(context,key,price) # Update if already exists
+            max = Get(context, 'max')
+            price_key = concat(id, price)
+            count = Increment(context, price_key)
+            if count > max:
+                Put(context, 'max', count)
+                Put(context, id, price)
+                Log("Updated best price")
+            return True
 
         elif operation == 'judge':
             id = args[0]
             playerkey = concat("players::", id)
             curr_list = Get(context, playerkey)
             nplayers = len(curr_list) // 20
-            max = 0
-            best_price = -1
+            decided_price = Get(context, id)
             for i in range(0, nplayers):
                 start = 20 * i
                 player = substr(curr_list,start, 20)
                 Log(player)
+                Log("Checking if player lied")
                 key = concat(player, id)
                 price = Get(context, key)
-                price_key = concat(id, price)
-                count = Increment(context, price_key)
-                if count > max:
-                    max = count
-                    best_price = price
-            if max == 0:
-                Log("No entries")
-                return False
-            else:
-                Log(max)
-                Log(best_price)
-                Put(context, id, best_price)
+                if decided_price != price:
+                    Log("Player did LIE!")
+                else:
+                    Log("Player told the TRUTH!")
                 return True
         return True
     return False
