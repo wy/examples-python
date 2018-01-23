@@ -17,7 +17,7 @@ from neo.Network.NodeLeader import NodeLeader
 from neo.Core.Blockchain import Blockchain
 from neo.Implementations.Blockchains.LevelDB.LevelDBBlockchain import LevelDBBlockchain
 from neo.Settings import settings
-from neo.Prompt.Commands.Invoke import InvokeContract, TestInvokeContract, test_invoke
+from Invoke_Debug import InvokeContract, TestInvokeContract, test_invoke
 from neo.Implementations.Wallets.peewee.UserWallet import UserWallet
 from neocore.KeyPair import KeyPair
 
