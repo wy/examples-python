@@ -80,6 +80,8 @@ def custom_background_code():
     thread and handle exiting this thread in another way (eg. with signals and events).
     """
     while True:
+        args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f', 'new', '3']
+        test_invoke_contract(args)
         logger.info("Block %s / %s", str(Blockchain.Default().Height), str(Blockchain.Default().HeaderHeight))
         sleep(15)
 
