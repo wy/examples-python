@@ -113,9 +113,6 @@ def main():
     d.setDaemon(True)  # daemonizing the thread will kill it when the main thread is quit
     d.start()
 
-    args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f', 'new', [1]]
-    test_invoke_contract(args)
-
     # Run all the things (blocking call)
     logger.info("Everything setup and running. Waiting for events...")
     reactor.run()
