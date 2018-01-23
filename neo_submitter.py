@@ -39,6 +39,8 @@ def test_invoke_contract(args):
         print("where's the wallet")
         return
     if args and len(args) > 0:
+        print(args)
+        print(args[1:])
         tx, fee, results, num_ops= TestInvokeContract(Wallet, args)
 
         print("Results %s " % [str(item) for item in results])
