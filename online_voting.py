@@ -1,5 +1,7 @@
 """
-Designed to illustrate the basic voting mechanics
+Builds on voting.py to use an online voting algorithm.
+By that I mean that it is iteratively figuring out the winner after each submission.
+All Judge does is lock down the selection.
 """
 
 from boa.blockchain.vm.System.ExecutionEngine import GetScriptContainer,GetExecutingScriptHash
