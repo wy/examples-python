@@ -29,7 +29,7 @@ from random import Random
 
 # Setup the smart contract instance
 # This is online voting v0.5
-smart_contract = SmartContract("ef254dc68e36de6a3a5d2de59ae1cdff3887938f ")
+smart_contract = SmartContract("ef254dc68e36de6a3a5d2de59ae1cdff3887938f")
 wallet_hash = 'AKgM1UKH1yaqWXZ24ro3woaxbkXnwGJPnP'
 #wif = 'L5Cp8JMBuLQXvsY5Gijj7oPXkit9skMpsJu7ECyyrnvBmJcgGa7v'
 Wallet = None
