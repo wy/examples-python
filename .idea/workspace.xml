@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb8cf7b8-120d-49c0-9c51-063113f72a6f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/neo_submitter.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/online_voting.avm" afterPath="$PROJECT_DIR$/online_voting.avm" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/online_voting.py" afterPath="$PROJECT_DIR$/online_voting.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/neo_submitter.py" afterPath="$PROJECT_DIR$/neo_submitter.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,7 +31,20 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1760">
               <caret line="44" column="4" lean-forward="false" selection-start-line="44" selection-start-column="4" selection-end-line="44" selection-end-column="4" />
-              <folding />
+              <folding>
+                <marker date="1516738560753" expanded="true" signature="27:365" ph="..." />
+                <marker date="1516738560753" expanded="true" signature="65:139" ph="..." />
+                <marker date="1516738560753" expanded="true" signature="74:107" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                <marker date="1516738560753" expanded="true" signature="175:247" ph="..." />
+                <marker date="1516738560753" expanded="true" signature="184:217" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                <marker date="1516738560753" expanded="true" signature="288:365" ph="..." />
+                <marker date="1516738560753" expanded="true" signature="297:330" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                <marker date="1516738560753" expanded="true" signature="391:436" ph="..." />
+                <marker date="1516738560753" expanded="true" signature="396:427" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                <marker date="1516738560753" expanded="true" signature="460:505" ph="..." />
+                <marker date="1516738560753" expanded="true" signature="465:496" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                <marker date="1516738560753" expanded="true" signature="539:570" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -63,11 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="online_voting.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="online_voting.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/online_voting.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="778">
-              <caret line="95" column="19" lean-forward="true" selection-start-line="95" selection-start-column="19" selection-end-line="95" selection-end-column="19" />
+            <state relative-caret-position="2858">
+              <caret line="90" column="42" lean-forward="false" selection-start-line="90" selection-start-column="42" selection-end-line="90" selection-end-column="42" />
               <folding>
                 <element signature="e#192#286#0" expanded="true" />
               </folding>
@@ -75,12 +85,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="neo_submitter.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="neo_submitter.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/neo_submitter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="178">
+              <caret line="63" column="20" lean-forward="true" selection-start-line="63" selection-start-column="20" selection-end-line="63" selection-end-column="20" />
+              <folding>
+                <element signature="e#289#305#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -109,7 +121,7 @@
         <entry file="file://$PROJECT_DIR$/base58helper.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="680">
-              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -164,8 +176,8 @@
         <option value="$PROJECT_DIR$/base58helper.py" />
         <option value="$PROJECT_DIR$/voting.py" />
         <option value="$PROJECT_DIR$/hello_compiler.py" />
-        <option value="$PROJECT_DIR$/neo_submitter.py" />
         <option value="$PROJECT_DIR$/online_voting.py" />
+        <option value="$PROJECT_DIR$/neo_submitter.py" />
       </list>
     </option>
   </component>
@@ -413,7 +425,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1760">
           <caret line="44" column="4" lean-forward="false" selection-start-line="44" selection-start-column="4" selection-end-line="44" selection-end-column="4" />
-          <folding />
+          <folding>
+            <marker date="1516738560753" expanded="true" signature="27:365" ph="..." />
+            <marker date="1516738560753" expanded="true" signature="65:139" ph="..." />
+            <marker date="1516738560753" expanded="true" signature="74:107" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1516738560753" expanded="true" signature="175:247" ph="..." />
+            <marker date="1516738560753" expanded="true" signature="184:217" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1516738560753" expanded="true" signature="288:365" ph="..." />
+            <marker date="1516738560753" expanded="true" signature="297:330" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1516738560753" expanded="true" signature="391:436" ph="..." />
+            <marker date="1516738560753" expanded="true" signature="396:427" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1516738560753" expanded="true" signature="460:505" ph="..." />
+            <marker date="1516738560753" expanded="true" signature="465:496" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1516738560753" expanded="true" signature="539:570" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -629,7 +654,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1760">
           <caret line="44" column="4" lean-forward="false" selection-start-line="44" selection-start-column="4" selection-end-line="44" selection-end-column="4" />
-          <folding />
+          <folding>
+            <marker date="1516738560753" expanded="true" signature="27:365" ph="..." />
+            <marker date="1516738560753" expanded="true" signature="65:139" ph="..." />
+            <marker date="1516738560753" expanded="true" signature="74:107" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1516738560753" expanded="true" signature="175:247" ph="..." />
+            <marker date="1516738560753" expanded="true" signature="184:217" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1516738560753" expanded="true" signature="288:365" ph="..." />
+            <marker date="1516738560753" expanded="true" signature="297:330" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1516738560753" expanded="true" signature="391:436" ph="..." />
+            <marker date="1516738560753" expanded="true" signature="396:427" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1516738560753" expanded="true" signature="460:505" ph="..." />
+            <marker date="1516738560753" expanded="true" signature="465:496" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1516738560753" expanded="true" signature="539:570" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -659,14 +697,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/neo_submitter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/BinaryReader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-880">
@@ -680,7 +710,7 @@
     <entry file="file://$PROJECT_DIR$/base58helper.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="680">
-          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
@@ -689,10 +719,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/online_voting.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="778">
-          <caret line="95" column="19" lean-forward="true" selection-start-line="95" selection-start-column="19" selection-end-line="95" selection-end-column="19" />
+        <state relative-caret-position="2858">
+          <caret line="90" column="42" lean-forward="false" selection-start-line="90" selection-start-column="42" selection-end-line="90" selection-end-column="42" />
           <folding>
             <element signature="e#192#286#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neo_submitter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="63" column="20" lean-forward="true" selection-start-line="63" selection-start-column="20" selection-end-line="63" selection-end-column="20" />
+          <folding>
+            <element signature="e#289#305#0" expanded="true" />
           </folding>
         </state>
       </provider>
