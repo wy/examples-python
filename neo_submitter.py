@@ -21,6 +21,7 @@ from Invoke_Debug import InvokeContract, TestInvokeContract, test_invoke
 from neo.Implementations.Wallets.peewee.UserWallet import UserWallet
 from neocore.KeyPair import KeyPair
 
+from random import Random
 
 # If you want the log messages to also be saved in a logfile, enable the
 # next line. This configures a logfile with max 10 MB and 3 rotations:
@@ -68,7 +69,9 @@ def sc_log(event):
     logger.info("- payload part 1: %s", event.event_payload[0])
     game = event.event_payload[0]
     #args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f','submit',[game,2,wallet_hash]]
-    args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f ', 'new', [3]]
+    x = Random.randint(1, 9)
+
+    args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f ', 'new', [x]]
     test_invoke_contract(args)
 
 
@@ -80,8 +83,6 @@ def custom_background_code():
     thread and handle exiting this thread in another way (eg. with signals and events).
     """
     while True:
-        args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f', 'new', [3]]
-        test_invoke_contract(args)
         logger.info("Block %s / %s", str(Blockchain.Default().Height), str(Blockchain.Default().HeaderHeight))
         sleep(15)
 
@@ -111,6 +112,9 @@ def main():
     d = threading.Thread(target=custom_background_code)
     d.setDaemon(True)  # daemonizing the thread will kill it when the main thread is quit
     d.start()
+
+    args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f', 'new', [1]]
+    test_invoke_contract(args)
 
     # Run all the things (blocking call)
     logger.info("Everything setup and running. Waiting for events...")
