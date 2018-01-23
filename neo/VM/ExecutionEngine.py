@@ -701,12 +701,14 @@ class ExecutionEngine():
                     return
 
                 item = estack.Pop()
+                print(item)
 
                 if not item.IsArray:
                     self._VMState |= VMState.FAULT
                     return
 
                 items = item.GetArray()
+                print(items)
 
                 if index >= len(items):
                     self._VMState |= VMState.FAULT
