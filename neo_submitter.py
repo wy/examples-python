@@ -12,11 +12,14 @@ from time import sleep
 from logzero import logger
 from twisted.internet import reactor, task
 
-from neo.contrib.smartcontract import SmartContract
+from neo.contrib.smartcontract import  SmartContract
 from neo.Network.NodeLeader import NodeLeader
 from neo.Core.Blockchain import Blockchain
 from neo.Implementations.Blockchains.LevelDB.LevelDBBlockchain import LevelDBBlockchain
 from neo.Settings import settings
+from neo.Prompt.Commands.Invoke import InvokeContract, TestInvokeContract, test_invoke
+from neo.Implementations.Wallets.peewee.UserWallet import UserWallet
+from neocore.KeyPair import KeyPair
 
 
 # If you want the log messages to also be saved in a logfile, enable the
@@ -26,12 +29,31 @@ from neo.Settings import settings
 # Setup the smart contract instance
 # This is online voting v0.5
 smart_contract = SmartContract("11356dede91d9cb9909146d90be8c32fa980e31f")
+wallet_hash = 'AYr1yJo42i58dU6kQX6j96ayCw13zhvjYv'
+wif = 'L5Cp8JMBuLQXvsY5Gijj7oPXkit9skMpsJu7ECyyrnvBmJcgGa7v'
+Wallet = UserWallet.Create(path="mywallet",password="###")
+Wallet.CreateKey(KeyPair.PrivateKeyFromWIF(wif))
+
+def test_invoke_contract(args):
+    if not Wallet:
+        print("where's the wallet")
+        return
+    if args and len(args) > 0:
+        tx, fee, results, num_ops= TestInvokeContract(Wallet, args)
+
+        print("Results %s " % [str(item) for item in results])
+
+        if tx is not None and results is not None:
+            print("Invoking for real")
+            result = InvokeContract(Wallet, tx, fee)
+            return
+    return
 
 
 # Register an event handler for Runtime.Notify events of the smart contract.
-@smart_contract.on_log
+@smart_contract.on_notify()
 def sc_log(event):
-    logger.info("SmartContract Runtime.Log event: %s", event)
+    logger.info("SmartContract Runtime.Notify event: %s", event)
 
     # Make sure that the event payload list has at least one element.
     if not len(event.event_payload):
@@ -41,6 +63,11 @@ def sc_log(event):
     # you should know what data-type is in the bytes, and how to decode it. In this example,
     # it's just a string, so we decode it with utf-8:
     logger.info("- payload part 1: %s", event.event_payload[0].decode("utf-8"))
+    game = event.event_payload[0]
+    args = ['11356dede91d9cb9909146d90be8c32fa980e31f','submit',[game,2,wallet_hash]]
+
+    test_invoke_contract(args)
+
 
 
 def custom_background_code():

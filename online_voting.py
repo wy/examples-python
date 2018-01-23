@@ -2,6 +2,7 @@
 Builds on voting.py to use an online voting algorithm.
 By that I mean that it is iteratively figuring out the winner after each submission.
 All Judge does is lock down the selection.
+0.6 - change to Notify for the New Game success
 """
 
 from boa.blockchain.vm.System.ExecutionEngine import GetScriptContainer,GetExecutingScriptHash
@@ -37,6 +38,7 @@ def Main(operation, args):
             Put(context,"current_game", id)
             Put(context, "max", 0)
             Log("Created a new game")
+            Notify(id)
 
         elif operation == 'submit':
             id = args[0]
