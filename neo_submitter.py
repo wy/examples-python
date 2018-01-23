@@ -100,6 +100,7 @@ def main():
     d.setDaemon(True)  # daemonizing the thread will kill it when the main thread is quit
     d.start()
 
+    global Wallet
     Wallet = UserWallet.Create(path="mywallet", password="0123456789")
     logger.info("Created the Wallet")
     logger.info(Wallet.AddressVersion)
