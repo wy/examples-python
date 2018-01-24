@@ -38,14 +38,6 @@ Wallet = None
 
 buffer = None
 
-def d_update_buffer():
-    global buffer
-    while True:
-        buffer = coinmarketcap.update_buffer(buffer)
-        print(buffer)
-        sleep(60)
-
-
 def test_invoke_contract(args):
     if not Wallet:
         print("where's the wallet")
@@ -100,7 +92,7 @@ def sc_log(event):
     #x = random.randint(1, 9)
     latest_price = BigInteger(float(buffer[-1][1])*1000)
 
-    args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f', 'new', [latest_price]]
+    args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f', 'submit', [game, latest_price, 'Aaaapk3CRx547bFvkemgc7z2xXewzaZtdP']]
 
     # Start a thread with custom code
     d = threading.Thread(target=test_invoke_contract, args=[args])
@@ -116,8 +108,11 @@ def custom_background_code():
     moment, whenever the main thread quits. If you need more safety, don't use a  daemonized
     thread and handle exiting this thread in another way (eg. with signals and events).
     """
+    global buffer
     while True:
         logger.info("Block %s / %s", str(Blockchain.Default().Height), str(Blockchain.Default().HeaderHeight))
+        buffer = coinmarketcap.update_buffer(buffer)
+        print(buffer)
         sleep(15)
 
 
