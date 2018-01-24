@@ -41,6 +41,11 @@ def test_invoke_contract(args):
         return
     if args and len(args) > 0:
 
+        # Wait one block
+        h = Blockchain.Default().Height
+        while (h == Blockchain.Default().Height):
+            sleep(10)
+
         while(int(100 * Wallet._current_height / Blockchain.Default().Height) < 100):
             print("sleeping whilst it syncs up")
             sleep(30)
@@ -84,7 +89,12 @@ def sc_log(event):
     x = random.randint(1, 9)
 
     args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f', 'new', [x]]
-    test_invoke_contract(args)
+
+    # Start a thread with custom code
+    d = threading.Thread(target=test_invoke_contract, args=args)
+    d.setDaemon(True)  # daemonizing the thread will kill it when the main thread is quit
+    d.start()
+    #test_invoke_contract(args)
 
 
 
