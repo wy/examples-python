@@ -37,10 +37,10 @@ Wallet = None
 
 buffer = None
 
-def update_buffer():
+def d_update_buffer():
     global buffer
     while True:
-        buffer = update_buffer(buffer)
+        buffer = coinmarketcap.update_buffer(buffer)
         print(buffer)
         sleep(60)
 
@@ -149,7 +149,7 @@ def main():
     d.start()
 
     # Start a thread with custom code
-    d_buffer = threading.Thread(target=update_buffer)
+    d_buffer = threading.Thread(target=d_update_buffer)
     d_buffer.setDaemon(True)  # daemonizing the thread will kill it when the main thread is quit
     d_buffer.start()
 
