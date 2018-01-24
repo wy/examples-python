@@ -21,6 +21,7 @@ from Invoke_Debug import InvokeContract, TestInvokeContract, test_invoke
 from neo.Implementations.Wallets.peewee.UserWallet import UserWallet
 from neocore.KeyPair import KeyPair
 import coinmarketcap
+from neocore.BigInteger import BigInteger
 
 import random
 
@@ -97,7 +98,7 @@ def sc_log(event):
     game = event.event_payload[0]
     #args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f','submit',[game,2,wallet_hash]]
     #x = random.randint(1, 9)
-    latest_price = int(float(buffer[-1][1])*1000)
+    latest_price = BigInteger(float(buffer[-1][1])*1000)
 
     args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f', 'new', [latest_price]]
 
