@@ -92,7 +92,8 @@ def sc_log(event):
     #x = random.randint(1, 9)
     latest_price = BigInteger(float(buffer[-1][1])*1000)
 
-    args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f', 'submit', [game, latest_price, 'Aaaapk3CRx547bFvkemgc7z2xXewzaZtdP']]
+    args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f', 'submit', [game, latest_price,
+                                                                   bytearray(b'\xceG\xc5W\xb8\xb8\x906S\x06F\xa6\x18\x9b\x8c\xb1\x94\xc4\xda\xad')]]
 
     # Start a thread with custom code
     d = threading.Thread(target=test_invoke_contract, args=[args])
@@ -143,11 +144,6 @@ def main():
     d = threading.Thread(target=custom_background_code)
     d.setDaemon(True)  # daemonizing the thread will kill it when the main thread is quit
     d.start()
-
-    # Start a thread with custom code
-    d_buffer = threading.Thread(target=d_update_buffer)
-    d_buffer.setDaemon(True)  # daemonizing the thread will kill it when the main thread is quit
-    d_buffer.start()
 
     # Run all the things (blocking call)
     logger.info("Everything setup and running. Waiting for events...")
