@@ -20,6 +20,7 @@ from neo.Settings import settings
 from Invoke_Debug import InvokeContract, TestInvokeContract, test_invoke
 from neo.Implementations.Wallets.peewee.UserWallet import UserWallet
 from neocore.KeyPair import KeyPair
+import coinmarketcap
 
 import random
 
@@ -33,6 +34,15 @@ smart_contract = SmartContract("ef254dc68e36de6a3a5d2de59ae1cdff3887938f")
 wallet_hash = 'Aaaapk3CRx547bFvkemgc7z2xXewzaZtdP'
 #wif = 'L5Cp8JMBuLQXvsY5Gijj7oPXkit9skMpsJu7ECyyrnvBmJcgGa7v'
 Wallet = None
+
+buffer = None
+
+def update_buffer():
+    global buffer
+    while True:
+        buffer = update_buffer(buffer)
+        print(buffer)
+        sleep(60)
 
 
 def test_invoke_contract(args):
@@ -48,7 +58,7 @@ def test_invoke_contract(args):
 
         while(int(100 * Wallet._current_height / Blockchain.Default().Height) < 100):
             print("sleeping whilst it syncs up")
-            sleep(30)
+            sleep(10)
 
 
         print(args)
@@ -86,12 +96,13 @@ def sc_log(event):
     logger.info("- payload part 1: %s", event.event_payload[0])
     game = event.event_payload[0]
     #args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f','submit',[game,2,wallet_hash]]
-    x = random.randint(1, 9)
+    #x = random.randint(1, 9)
+    latest_price = int(float(buffer[-1][1])*1000)
 
-    args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f', 'new', [x]]
+    args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f', 'new', [latest_price]]
 
     # Start a thread with custom code
-    d = threading.Thread(target=test_invoke_contract, args=args)
+    d = threading.Thread(target=test_invoke_contract, args=[args])
     d.setDaemon(True)  # daemonizing the thread will kill it when the main thread is quit
     d.start()
     #test_invoke_contract(args)
@@ -136,6 +147,11 @@ def main():
     d = threading.Thread(target=custom_background_code)
     d.setDaemon(True)  # daemonizing the thread will kill it when the main thread is quit
     d.start()
+
+    # Start a thread with custom code
+    d_buffer = threading.Thread(target=update_buffer)
+    d_buffer.setDaemon(True)  # daemonizing the thread will kill it when the main thread is quit
+    d_buffer.start()
 
     # Run all the things (blocking call)
     logger.info("Everything setup and running. Waiting for events...")
