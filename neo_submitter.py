@@ -40,6 +40,12 @@ def test_invoke_contract(args):
         print("where's the wallet")
         return
     if args and len(args) > 0:
+
+        while(int(100 * Wallet._current_height / Blockchain.Default().Height) < 100):
+            print("sleeping whilst it syncs up")
+            sleep(30)
+
+
         print(args)
         print(args[1:])
         tx, fee, results, num_ops= TestInvokeContract(Wallet, args)
@@ -77,7 +83,7 @@ def sc_log(event):
     #args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f','submit',[game,2,wallet_hash]]
     x = random.randint(1, 9)
 
-    args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f', 'getvalue', [b'current_game']]
+    args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f', 'new', [x]]
     test_invoke_contract(args)
 
 
