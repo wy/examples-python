@@ -30,7 +30,7 @@ import random
 # Setup the smart contract instance
 # This is online voting v0.5
 smart_contract = SmartContract("ef254dc68e36de6a3a5d2de59ae1cdff3887938f")
-wallet_hash = 'AKgM1UKH1yaqWXZ24ro3woaxbkXnwGJPnP'
+wallet_hash = 'Aaaapk3CRx547bFvkemgc7z2xXewzaZtdP'
 #wif = 'L5Cp8JMBuLQXvsY5Gijj7oPXkit9skMpsJu7ECyyrnvBmJcgGa7v'
 Wallet = None
 
@@ -48,6 +48,8 @@ def test_invoke_contract(args):
 
         if tx is not None and results is not None:
             print("Invoking for real")
+            print(Wallet.ToJson())
+
             result = InvokeContract(Wallet, tx, fee)
             return
     return
@@ -75,7 +77,7 @@ def sc_log(event):
     #args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f','submit',[game,2,wallet_hash]]
     x = random.randint(1, 9)
 
-    args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f', 'new', [x]]
+    args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f', 'getvalue', [b'current_game']]
     test_invoke_contract(args)
 
 
@@ -107,9 +109,11 @@ def main():
     settings.set_log_smart_contract_events(False)
 
     global Wallet
-    Wallet = UserWallet.Open(path="testwallet", password="0123456789")
+    Wallet = UserWallet.Open(path="infinitewallet", password="0123456789")
     logger.info("Created the Wallet")
     logger.info(Wallet.AddressVersion)
+    walletdb_loop = task.LoopingCall(Wallet.ProcessBlocks)
+    walletdb_loop.start(1)
     #Wallet.CreateKey(KeyPair.PrivateKeyFromWIF(wif))
 
     # Start a thread with custom code
