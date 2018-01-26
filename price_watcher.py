@@ -1,3 +1,9 @@
+"""
+Simply watches out for notify events from the smart contract
+and pretty print out the latest price
+
+"""
+
 '''
 NEO Listening and Submitter
 This python node will listen on the blockchain for changes to the smart contract (i.e. a new game)
@@ -33,47 +39,8 @@ import random
 # Setup the smart contract instance
 # This is online voting v0.5
 
-smart_contract_hash = "9c6fc6c70283c0af1e84aba6888609e2fc24db95"
+smart_contract_hash = "ef254dc68e36de6a3a5d2de59ae1cdff3887938f"
 smart_contract = SmartContract(smart_contract_hash)
-#wallet_hash = 'Aaaapk3CRx547bFvkemgc7z2xXewzaZtdP'
-#wallet_arr = Helper.AddrStrToScriptHash(wallet_hash).ToArray()
-
-Wallet = None
-
-buffer = None
-
-normalisation = 300
-
-def test_invoke_contract(args):
-    if not Wallet:
-        print("where's the wallet")
-        return
-    if args and len(args) > 0:
-
-        # Wait one block
-        h = Blockchain.Default().Height
-        while (h == Blockchain.Default().Height):
-            sleep(10)
-
-        while(int(100 * Wallet._current_height / Blockchain.Default().Height) < 100):
-            print("sleeping whilst it syncs up")
-            sleep(10)
-
-
-        print(args)
-        print(args[1:])
-        tx, fee, results, num_ops= TestInvokeContract(Wallet, args)
-
-        print("Results %s " % [str(item) for item in results])
-
-        if tx is not None and results is not None:
-            print("Invoking for real")
-            print(Wallet.ToJson())
-
-            result = InvokeContract(Wallet, tx, fee)
-            return
-    return
-
 
 # Register an event handler for Runtime.Notify events of the smart contract.
 @smart_contract.on_notify
@@ -93,23 +60,9 @@ def sc_log(event):
     # you should know what data-type is in the bytes, and how to decode it. In this example,
     # it's just a string, so we decode it with utf-8:
     logger.info("- payload part 1: %s", event.event_payload[0])
-    game = event.event_payload[0]
-    #args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f','submit',[game,2,wallet_hash]]
-    #x = random.randint(1, 9)
-    latest_price = BigInteger(float(buffer[-1][1])*1000)
+    price = BigInteger.FromBytes(event.event_payload[0])
+    print(price)
 
-    live_ts = BigInteger(buffer[-1][0])
-    remainder = live_ts % normalisation
-    ts = live_ts - remainder
-
-    args = [smart_contract_hash, 'submit_prediction', [game, ts, latest_price,wallet_arr]]
-    #bytearray(b'\xceG\xc5W\xb8\xb8\x906S\x06F\xa6\x18\x9b\x8c\xb1\x94\xc4\xda\xad')]]
-
-    # Start a thread with custom code
-    d = threading.Thread(target=test_invoke_contract, args=[args])
-    d.setDaemon(True)  # daemonizing the thread will kill it when the main thread is quit
-    d.start()
-    #test_invoke_contract(args)
 
 
 
@@ -122,27 +75,8 @@ def custom_background_code():
     global buffer
     while True:
         logger.info("Block %s / %s", str(Blockchain.Default().Height), str(Blockchain.Default().HeaderHeight))
-        buffer, changed = coinmarketcap.update_buffer(buffer)
+        buffer = coinmarketcap.update_buffer(buffer)
         print(buffer)
-
-
-        if changed:
-
-            latest_price = BigInteger(float(buffer[-1][1]) * 1000)
-
-            live_ts = BigInteger(buffer[-1][0])
-            remainder = live_ts % normalisation
-            ts = live_ts - remainder
-
-            print(args)
-
-            args = [smart_contract_hash, 'submit_prediction', [bytearray(b'NEO_USD'), ts, latest_price, wallet_arr]]
-            # bytearray(b'\xceG\xc5W\xb8\xb8\x906S\x06F\xa6\x18\x9b\x8c\xb1\x94\xc4\xda\xad')]]
-
-            # Start a thread with custom code
-            d = threading.Thread(target=test_invoke_contract, args=[args])
-            d.setDaemon(True)  # daemonizing the thread will kill it when the main thread is quit
-            d.start()
         sleep(15)
 
 
@@ -181,9 +115,4 @@ def main():
 
 
 if __name__ == "__main__":
-    global wallet_hash
-    global wallet_arr
-    wallet_hash = sys.argv[1]
-    print(wallet_hash)
-    wallet_arr = Helper.AddrStrToScriptHash(wallet_hash).ToArray()
     main()

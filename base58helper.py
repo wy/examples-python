@@ -12,7 +12,11 @@ from neocore import UIntBase
 
 #f = io.BytesIO(b'\x97afZ')
 f = io.BytesIO(b'p\\x15\\x02')
+#f =  io.BytesIO(b'\xa1\x16\x02')
 reader = BinaryReader(f)
+
+
+print(BigInteger.FromBytes(b'\x80\x16\x02'))
 
 b = BigInteger.FromBytes(b'\xa0%\x02')
 print(BigInteger(136854).ToByteArray())
@@ -25,7 +29,7 @@ print(int(datetime.now().timestamp()))
 print(datetime.fromtimestamp(1516658660))
 print(datetime.fromtimestamp(1516658961))
 
-print(reader.ReadInt32())
+#print(reader.ReadInt32())
 
 
 def AddrStrToScriptHash(address):

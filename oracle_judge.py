@@ -58,7 +58,7 @@ from boa.blockchain.vm.Neo.Storage import GetContext, Get, Put, Delete
 from boa.blockchain.vm.Neo.Output import GetScriptHash,GetValue,GetAssetId
 from boa.code.builtins import concat,take, substr, range, list
 from boa.blockchain.vm.Neo.Blockchain import GetHeight, GetHeader
-from boa.blockchain.vm.Neo.Header import GetTimestampte
+from boa.blockchain.vm.Neo.Header import GetTimestamp
 
 owner = b'z]\x16\x10\xad\xce\xc3Q\x1a&Fv\xfa\x1as\xa4E\xa03\xef'
 GAS_ASSET_ID = b'\xe7\x2d\x28\x69\x79\xee\x6c\xb1\xb7\xe6\x5d\xfd\xdf\xb2\xe3\x84\x10\x0b\x8d\x14\x8e\x77\x58\xde\x42\xe4\x16\x8b\x71\x79\x2c\x60';
@@ -252,8 +252,10 @@ def UpdateMaxVotes(prediction_name, normalised_timestamp, count, context):
 
 
 def UpdatePrice(prediction_name, normalised_timestamp, price, context):
-    key = concat("latest_prediction", prediction_name)
-    Put(context, key, price)
+    game_ts = GetCurrentTimestamp(prediction_name, context)
+    if game_ts == normalised_timestamp:
+        key = concat("latest_prediction", prediction_name)
+        Put(context, key, price)
     k0 = concat("specific_prediction", prediction_name)
     key = concat(k0, normalised_timestamp)
     Put(context, key, price)
@@ -392,8 +394,8 @@ def ForceJudge(prediction_name, context):
     # Distribute GAS to Winners
     # Move onto next timestamp
 
-    winning_prediction = GetLatestPrediction(prediction_name, context)
     current_timestamp = GetCurrentTimestamp(prediction_name, context)
+    winning_prediction = GetPrediction(prediction_name, current_timestamp, context)
     oracles = GetOracles(prediction_name, current_timestamp, context)
 
     nOracles = len(oracles) // 20
