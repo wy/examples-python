@@ -343,6 +343,9 @@ def CreateNewPredictionGame(prediction_name, context):
     else:
         key = concat("prediction_live", prediction_name)
         Put(context, key, 1)
+        normalised_timestamp = GetNormalisedTimestamp
+        key = concat("timestamp", prediction_name)
+        Put(context, key, normalised_timestamp)
         return True
     return False
 
@@ -379,6 +382,13 @@ def AddBalance(prediction_name, sender_hash, winnings, context):
     balance = Get(context, key)
     balance = balance + winnings
     Put(context, key, balance)
+
+def GetNormalisedTimestamp():
+    height = GetHeight()
+    hdr = GetHeader(height)
+    ts = GetTimestamp(hdr)
+    rem = ts % 300
+    return ts - rem
 
 def CheckTimestamp(timestamp_normalised):
     # Checks if TS() > T_n + 8 minutes

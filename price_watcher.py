@@ -23,7 +23,6 @@ from neo.Network.NodeLeader import NodeLeader
 from neo.Core.Blockchain import Blockchain
 from neo.Implementations.Blockchains.LevelDB.LevelDBBlockchain import LevelDBBlockchain
 from neo.Settings import settings
-from Invoke_Debug import InvokeContract, TestInvokeContract, test_invoke
 from neo.Implementations.Wallets.peewee.UserWallet import UserWallet
 from neocore.KeyPair import KeyPair
 import coinmarketcap
@@ -40,8 +39,8 @@ import random
 # This is online voting v0.5
 
 #smart_contract_hash = "ef254dc68e36de6a3a5d2de59ae1cdff3887938f"
-global smart_contract
-smart_contract = SmartContract('4d36b20f12e90447b3c523654ad806abb7a75be2')
+#global smart_contract
+#smart_contract = SmartContract('4d36b20f12e90447b3c523654ad806abb7a75be2')
 
 def custom_background_code():
     """ Custom code run in a background thread. Prints the current block height.
@@ -53,30 +52,6 @@ def custom_background_code():
     while True:
         logger.info("Block %s / %s", str(Blockchain.Default().Height), str(Blockchain.Default().HeaderHeight))
         sleep(15)
-
-
-
-# Register an event handler for Runtime.Notify events of the smart contract.
-@smart_contract.on_notify
-def sc_log(event):
-    logger.info(Wallet.AddressVersion)
-    logger.info("SmartContract Runtime.Notify event: %s", event)
-
-    # Make sure that the event payload list has at least one element.
-    if not len(event.event_payload):
-        return
-
-    # Make sure not test mode
-    if event.test_mode:
-        return
-
-    # The event payload list has at least one element. As developer of the smart contract
-    # you should know what data-type is in the bytes, and how to decode it. In this example,
-    # it's just a string, so we decode it with utf-8:
-    logger.info("- payload part 1: %s", event.event_payload[0])
-    price = BigInteger.FromBytes(event.event_payload[0])
-    USD_price = float(price)/1000.0
-    print(USD_price)
 
 def main():
 
@@ -90,14 +65,6 @@ def main():
 
     # Disable smart contract events for external smart contracts
     settings.set_log_smart_contract_events(False)
-
-    global Wallet
-    Wallet = UserWallet.Open(path="infinitewallet", password="0123456789")
-    logger.info("Created the Wallet")
-    logger.info(Wallet.AddressVersion)
-    walletdb_loop = task.LoopingCall(Wallet.ProcessBlocks)
-    walletdb_loop.start(1)
-    #Wallet.CreateKey(KeyPair.PrivateKeyFromWIF(wif))
 
     # Start a thread with custom code
     d = threading.Thread(target=custom_background_code)
@@ -115,5 +82,27 @@ if __name__ == "__main__":
     global smart_contract
     smart_contract_hash = sys.argv[1]
     smart_contract = SmartContract(smart_contract_hash)
+
+    # Register an event handler for Runtime.Notify events of the smart contract.
+    @smart_contract.on_notify
+    def sc_log(event):
+        logger.info("SmartContract Runtime.Notify event: %s", event)
+
+        # Make sure that the event payload list has at least one element.
+        if not len(event.event_payload):
+            return
+
+        # Make sure not test mode
+        if event.test_mode:
+            return
+
+        # The event payload list has at least one element. As developer of the smart contract
+        # you should know what data-type is in the bytes, and how to decode it. In this example,
+        # it's just a string, so we decode it with utf-8:
+        logger.info("- payload part 1: %s", event.event_payload[0])
+        price = BigInteger.FromBytes(event.event_payload[0])
+        USD_price = float(price) / 1000.0
+        print(USD_price)
+
     main()
 
