@@ -39,8 +39,8 @@ import random
 # Setup the smart contract instance
 # This is online voting v0.5
 
-smart_contract_hash = "ef254dc68e36de6a3a5d2de59ae1cdff3887938f"
-smart_contract = SmartContract(smart_contract_hash)
+#smart_contract_hash = "ef254dc68e36de6a3a5d2de59ae1cdff3887938f"
+
 
 # Register an event handler for Runtime.Notify events of the smart contract.
 @smart_contract.on_notify
@@ -75,8 +75,6 @@ def custom_background_code():
     global buffer
     while True:
         logger.info("Block %s / %s", str(Blockchain.Default().Height), str(Blockchain.Default().HeaderHeight))
-        buffer = coinmarketcap.update_buffer(buffer)
-        print(buffer)
         sleep(15)
 
 
@@ -115,4 +113,9 @@ def main():
 
 
 if __name__ == "__main__":
+    global smart_contract_hash
+    global smart_contract
+    smart_contract_hash = sys.argv[1]
+
+    smart_contract = SmartContract(smart_contract_hash)
     main()

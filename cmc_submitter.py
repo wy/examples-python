@@ -33,7 +33,7 @@ import random
 # Setup the smart contract instance
 # This is online voting v0.5
 
-smart_contract_hash = "7dc2db1227a8518146dc41c55dfafa97d9a83c27"
+#smart_contract_hash = "7dc2db1227a8518146dc41c55dfafa97d9a83c27"
 smart_contract = SmartContract(smart_contract_hash)
 #wallet_hash = 'Aaaapk3CRx547bFvkemgc7z2xXewzaZtdP'
 #wallet_arr = Helper.AddrStrToScriptHash(wallet_hash).ToArray()
