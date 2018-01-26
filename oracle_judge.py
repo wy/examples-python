@@ -121,30 +121,34 @@ def Main(operation, args):
             return SubmitPrediction(prediction_name, normalised_timestamp, price, sender_hash, context)
         elif operation == 'create_new_prediction_game':
             Log("op: Create New Prediction Game")
-            if not CheckWitness(owner):
-                Log("Not owner")
-                return False
+            # Temporarily removed for testing
+            #if not CheckWitness(owner):
+            #    Log("Not owner")
+            #    return False
             prediction_name = args[0]
             return CreateNewPredictionGame(prediction_name, context)
         elif operation == 'remove_prediction':
             Log("op: Remove Prediction")
-            if not CheckWitness(owner):
-                Log("Not owner")
-                return False
+            # Temporarily removed for testing
+            #if not CheckWitness(owner):
+            #    Log("Not owner")
+            #    return False
             prediction_name = args[0]
             return RemovePrediction(prediction_name, context)
         elif operation == 'force_judge':
             Log("op: Force Judge")
-            if not CheckWitness(owner):
-                Log("Not owner")
-                return False
+            # Temporarily removed for testing
+            #if not CheckWitness(owner):
+            #    Log("Not owner")
+            #    return False
             prediction_name = args[0]
             return ForceJudge(prediction_name, context)
         elif operation == 'force_set_new_timestamp':
             Log("op: Force Set New Timestamp")
-            if not CheckWitness(owner):
-                Log("Not owner")
-                return False
+            # Temporarily removed for testing
+            #if not CheckWitness(owner):
+            #    Log("Not owner")
+            #    return False
             prediction_name = args[0]
             normalised_timestamp = args[1]
             return ForceSetNewTimestamp(prediction_name, normalised_timestamp, context)
