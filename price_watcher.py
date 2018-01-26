@@ -40,31 +40,7 @@ import random
 # This is online voting v0.5
 
 #smart_contract_hash = "ef254dc68e36de6a3a5d2de59ae1cdff3887938f"
-
-
-# Register an event handler for Runtime.Notify events of the smart contract.
-@smart_contract.on_notify
-def sc_log(event):
-    logger.info(Wallet.AddressVersion)
-    logger.info("SmartContract Runtime.Notify event: %s", event)
-
-    # Make sure that the event payload list has at least one element.
-    if not len(event.event_payload):
-        return
-
-    # Make sure not test mode
-    if event.test_mode:
-        return
-
-    # The event payload list has at least one element. As developer of the smart contract
-    # you should know what data-type is in the bytes, and how to decode it. In this example,
-    # it's just a string, so we decode it with utf-8:
-    logger.info("- payload part 1: %s", event.event_payload[0])
-    price = BigInteger.FromBytes(event.event_payload[0])
-    print(price)
-
-
-
+global smart_contract
 
 def custom_background_code():
     """ Custom code run in a background thread. Prints the current block height.
@@ -116,6 +92,27 @@ if __name__ == "__main__":
     global smart_contract_hash
     global smart_contract
     smart_contract_hash = sys.argv[1]
-
     smart_contract = SmartContract(smart_contract_hash)
     main()
+
+# Register an event handler for Runtime.Notify events of the smart contract.
+@smart_contract.on_notify
+def sc_log(event):
+    logger.info(Wallet.AddressVersion)
+    logger.info("SmartContract Runtime.Notify event: %s", event)
+
+    # Make sure that the event payload list has at least one element.
+    if not len(event.event_payload):
+        return
+
+    # Make sure not test mode
+    if event.test_mode:
+        return
+
+    # The event payload list has at least one element. As developer of the smart contract
+    # you should know what data-type is in the bytes, and how to decode it. In this example,
+    # it's just a string, so we decode it with utf-8:
+    logger.info("- payload part 1: %s", event.event_payload[0])
+    price = BigInteger.FromBytes(event.event_payload[0])
+    USD_price = float(price)/1000.0
+    print(USD_price)
