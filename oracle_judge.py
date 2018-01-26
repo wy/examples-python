@@ -327,6 +327,11 @@ def SubmitPrediction(prediction_name, normalised_timestamp, price, sender_hash, 
                 if count > max:
                     UpdateMaxVotes(prediction_name, normalised_timestamp, count, context)
                     UpdatePrice(prediction_name, normalised_timestamp, price, context)
+
+                # Check if we need to trigger Judge
+                current_timestamp = GetCurrentTimestamp(prediction_name, context)
+                if CheckTimestamp(current_timestamp):
+                    return ForceJudge(prediction_name, context)
                 return True
 
         else:
@@ -343,7 +348,7 @@ def CreateNewPredictionGame(prediction_name, context):
     else:
         key = concat("prediction_live", prediction_name)
         Put(context, key, 1)
-        normalised_timestamp = GetNormalisedTimestamp
+        normalised_timestamp = GetNormalisedTimestamp()
         key = concat("timestamp", prediction_name)
         Put(context, key, normalised_timestamp)
         return True
