@@ -328,11 +328,11 @@ def SubmitPrediction(prediction_name, normalised_timestamp, price, sender_hash, 
             else:
                 AddOracle(prediction_name, normalised_timestamp, sender_hash, context)
                 Put(context, key, price)
-                max = GetMaxVotes(prediction_name, normalised_timestamp, context)
+                maximum = GetMaxVotes(prediction_name, normalised_timestamp, context)
                 count = IncrementCount(prediction_name, normalised_timestamp, price, context)
                 Log(count)
-                Log(max)
-                if count > max:
+                Log(maximum)
+                if count > maximum:
                     UpdateMaxVotes(prediction_name, normalised_timestamp, count, context)
                     UpdatePrice(prediction_name, normalised_timestamp, price, context)
 
