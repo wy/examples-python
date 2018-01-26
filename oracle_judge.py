@@ -452,7 +452,7 @@ def GetLatestPrediction(prediction_name, context):
 
 def GetPrediction(prediction_name, normalised_timestamp, context):
     if CheckPredictionGameLive(prediction_name, context):
-        k0 = concat("spcific_prediction", prediction_name)
+        k0 = concat("specific_prediction", prediction_name)
         key = concat(k0, normalised_timestamp)
         prediction = Get(context, key)
         return prediction

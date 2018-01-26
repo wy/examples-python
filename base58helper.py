@@ -16,7 +16,7 @@ f = io.BytesIO(b'p\\x15\\x02')
 reader = BinaryReader(f)
 
 
-print(BigInteger.FromBytes(b'\x80\x16\x02'))
+print(BigInteger.FromBytes(b'$pkZ'))
 
 b = BigInteger.FromBytes(b'\xa0%\x02')
 print(BigInteger(136854).ToByteArray())

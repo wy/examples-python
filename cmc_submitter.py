@@ -33,7 +33,7 @@ import random
 # Setup the smart contract instance
 # This is online voting v0.5
 
-smart_contract_hash = "9c6fc6c70283c0af1e84aba6888609e2fc24db95"
+smart_contract_hash = "7dc2db1227a8518146dc41c55dfafa97d9a83c27"
 smart_contract = SmartContract(smart_contract_hash)
 #wallet_hash = 'Aaaapk3CRx547bFvkemgc7z2xXewzaZtdP'
 #wallet_arr = Helper.AddrStrToScriptHash(wallet_hash).ToArray()
@@ -134,10 +134,11 @@ def custom_background_code():
             remainder = live_ts % normalisation
             ts = live_ts - remainder
 
-            print(args)
+
 
             args = [smart_contract_hash, 'submit_prediction', [bytearray(b'NEO_USD'), ts, latest_price, wallet_arr]]
             # bytearray(b'\xceG\xc5W\xb8\xb8\x906S\x06F\xa6\x18\x9b\x8c\xb1\x94\xc4\xda\xad')]]
+            print(args)
 
             # Start a thread with custom code
             d = threading.Thread(target=test_invoke_contract, args=[args])
