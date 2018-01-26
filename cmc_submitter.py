@@ -8,7 +8,7 @@ Hence, you need to use the coz faucet somehow
 
 import threading
 from time import sleep
-import sys
+
 from logzero import logger
 from twisted.internet import reactor, task
 
@@ -22,7 +22,6 @@ from neo.Implementations.Wallets.peewee.UserWallet import UserWallet
 from neocore.KeyPair import KeyPair
 import coinmarketcap
 from neocore.BigInteger import BigInteger
-from neo.Core.Helper import Helper
 
 import random
 
@@ -32,16 +31,14 @@ import random
 
 # Setup the smart contract instance
 # This is online voting v0.5
-
-smart_contract_hash = "ef254dc68e36de6a3a5d2de59ae1cdff3887938f"
-smart_contract = SmartContract(smart_contract_hash)
+smart_contract = SmartContract("ef254dc68e36de6a3a5d2de59ae1cdff3887938f")
 wallet_hash = 'Aaaapk3CRx547bFvkemgc7z2xXewzaZtdP'
-wallet_arr = Helper.AddrStrToScriptHash(wallet_hash).ToArray()
-print(wallet_arr)
 #wif = 'L5Cp8JMBuLQXvsY5Gijj7oPXkit9skMpsJu7ECyyrnvBmJcgGa7v'
 Wallet = None
 
 buffer = None
+
+normalisation = 300
 
 def test_invoke_contract(args):
     if not Wallet:
@@ -97,8 +94,12 @@ def sc_log(event):
     #x = random.randint(1, 9)
     latest_price = BigInteger(float(buffer[-1][1])*1000)
 
-    args = [smart_contract_hash, 'submit', [game, latest_price,wallet_arr]]
-    #bytearray(b'\xceG\xc5W\xb8\xb8\x906S\x06F\xa6\x18\x9b\x8c\xb1\x94\xc4\xda\xad')]]
+    live_ts = BigInteger(buffer[-1][0])
+    remainder = live_ts % normalisation
+    ts = live_ts - remainder
+
+    args = ['ef254dc68e36de6a3a5d2de59ae1cdff3887938f', 'submit_prediction', [game, ts, latest_price,
+                                                                   bytearray(b'\xceG\xc5W\xb8\xb8\x906S\x06F\xa6\x18\x9b\x8c\xb1\x94\xc4\xda\xad')]]
 
     # Start a thread with custom code
     d = threading.Thread(target=test_invoke_contract, args=[args])
@@ -157,8 +158,4 @@ def main():
 
 
 if __name__ == "__main__":
-    global wallet_hash
-    global wallet_arr
-    wallet_hash = sys.argv[0]
-    wallet_arr = Helper.AddrStrToScriptHash(wallet_hash).ToArray()
     main()
