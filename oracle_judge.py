@@ -161,6 +161,12 @@ def Main(operation, args):
             prediction_name = args[0]
             normalised_timestamp = args[1]
             return GetPrediction(prediction_name, normalised_timestamp, context)
+        elif operation == 'get_value':
+            Log("op: Get Value")
+            key = args[0]
+            v = Get(context, key)
+            Log(v)
+            return v
         else:
             Log(operation)
             Log("op: Unknown operation")
@@ -324,6 +330,8 @@ def SubmitPrediction(prediction_name, normalised_timestamp, price, sender_hash, 
                 Put(context, key, price)
                 max = GetMaxVotes(prediction_name, normalised_timestamp, context)
                 count = IncrementCount(prediction_name, normalised_timestamp, price, context)
+                Log(count)
+                Log(max)
                 if count > max:
                     UpdateMaxVotes(prediction_name, normalised_timestamp, count, context)
                     UpdatePrice(prediction_name, normalised_timestamp, price, context)

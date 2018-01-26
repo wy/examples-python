@@ -18,7 +18,11 @@ reader = BinaryReader(f)
 
 print(BigInteger.FromBytes(b'$pkZ'))
 
-b = BigInteger.FromBytes(b'\xa0%\x02')
+print(BigInteger.FromBytes(b'\xd8\x9dkZ'))
+print(BigInteger.FromBytes(b'\xd8\x9dkZ'))
+print(BigInteger.FromBytes(b'\x04\x9fkZ'))
+
+b = BigInteger.FromBytes(b'\x04\x9fkZ')
 print(BigInteger(136854).ToByteArray())
 print("Yo")
 print(b)
