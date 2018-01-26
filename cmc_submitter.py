@@ -35,9 +35,8 @@ import random
 
 smart_contract_hash = "ef254dc68e36de6a3a5d2de59ae1cdff3887938f"
 smart_contract = SmartContract(smart_contract_hash)
-wallet_hash = 'Aaaapk3CRx547bFvkemgc7z2xXewzaZtdP'
-wallet_arr = Helper.AddrStrToScriptHash(wallet_hash).ToArray()
-print(wallet_arr)
+#wallet_hash = 'Aaaapk3CRx547bFvkemgc7z2xXewzaZtdP'
+#wallet_arr = Helper.AddrStrToScriptHash(wallet_hash).ToArray()
 
 Wallet = None
 
@@ -166,5 +165,6 @@ if __name__ == "__main__":
     global wallet_hash
     global wallet_arr
     wallet_hash = sys.argv[0]
+    print(wallet_hash)
     wallet_arr = Helper.AddrStrToScriptHash(wallet_hash).ToArray()
     main()
