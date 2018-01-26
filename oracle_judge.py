@@ -428,6 +428,10 @@ def ForceJudge(prediction_name, context):
             winner = substr(winners, start, 20)
             AddBalance(prediction_name, winner, winnings, context)
 
+    UpdatePrice(prediction_name, current_timestamp, winning_prediction, context)
+
+    Notify(winning_prediction)
+
     # Move onto next timestamp
     next_ts = NextTimestamp(current_timestamp)
     UpdateTimestamp(prediction_name, next_ts, context)

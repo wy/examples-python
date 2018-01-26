@@ -184,7 +184,9 @@ def main():
 if __name__ == "__main__":
     global wallet_hash
     global wallet_arr
+    global smart_contract_hash
     wallet_hash = sys.argv[1]
+    smart_contract_hash = sys.argv[2]
     print(wallet_hash)
     wallet_arr = Helper.AddrStrToScriptHash(wallet_hash).ToArray()
     main()
