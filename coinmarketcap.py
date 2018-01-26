@@ -28,18 +28,21 @@ def get_latest_price():
 def update_buffer(buffer, max_len=10):
 
     t, p = get_latest_price()
+    changed = False
 
     if buffer is None:
         buffer = [(t,p)]
+        changed = True
     else:
         (t_1, p_1) = buffer[-1]
         if t_1 < t:
             buffer.append((t,p))
+            changed = True
 
     if len(buffer) > max_len:
         buffer = buffer[-max_len:]
 
-    return buffer
+    return buffer, changed
 
 if __name__ == '__main__':
     buffer = None

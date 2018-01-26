@@ -122,9 +122,25 @@ def custom_background_code():
     global buffer
     while True:
         logger.info("Block %s / %s", str(Blockchain.Default().Height), str(Blockchain.Default().HeaderHeight))
-        buffer = coinmarketcap.update_buffer(buffer)
+        buffer, changed = coinmarketcap.update_buffer(buffer)
         print(buffer)
         sleep(15)
+
+        if changed:
+
+            latest_price = BigInteger(float(buffer[-1][1]) * 1000)
+
+            live_ts = BigInteger(buffer[-1][0])
+            remainder = live_ts % normalisation
+            ts = live_ts - remainder
+
+            args = [smart_contract_hash, 'submit_prediction', ['NEO_USD', ts, latest_price, wallet_arr]]
+            # bytearray(b'\xceG\xc5W\xb8\xb8\x906S\x06F\xa6\x18\x9b\x8c\xb1\x94\xc4\xda\xad')]]
+
+            # Start a thread with custom code
+            d = threading.Thread(target=test_invoke_contract, args=[args])
+            d.setDaemon(True)  # daemonizing the thread will kill it when the main thread is quit
+            d.start()
 
 
 

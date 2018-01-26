@@ -60,7 +60,7 @@ from boa.code.builtins import concat,take, substr, range, list
 from boa.blockchain.vm.Neo.Blockchain import GetHeight, GetHeader
 from boa.blockchain.vm.Neo.Header import GetTimestampte
 
-owner = 'ASvsbeHUiYfLj8NFEwgW88QPegnitBU2Mv'
+owner = b'z]\x16\x10\xad\xce\xc3Q\x1a&Fv\xfa\x1as\xa4E\xa03\xef'
 GAS_ASSET_ID = b'\xe7\x2d\x28\x69\x79\xee\x6c\xb1\xb7\xe6\x5d\xfd\xdf\xb2\xe3\x84\x10\x0b\x8d\x14\x8e\x77\x58\xde\x42\xe4\x16\x8b\x71\x79\x2c\x60';
 
 def Main(operation, args):
